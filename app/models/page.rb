@@ -4,5 +4,5 @@ class Page < ApplicationRecord
 
   belongs_to :category
   belongs_to :offer
-  has_many :banners
+  has_many :banners, dependent: :delete_all
 end

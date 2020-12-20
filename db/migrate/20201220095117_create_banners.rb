@@ -1,6 +1,6 @@
 class CreateBanners < ActiveRecord::Migration[6.1]
   def change
-    create_table :cbanners do |t|
+    create_table :banners do |t|
       t.references :banner_type, null: false, foreign_key: true
       t.references :page, null: false, foreign_key: true
       t.string :code, limit: 16, null: false
