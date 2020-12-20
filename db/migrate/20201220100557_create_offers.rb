@@ -7,5 +7,6 @@ class CreateOffers < ActiveRecord::Migration[6.1]
       t.timestamps
     end
     add_index :offers, :code, unique: true
+    add_index :offers, :affiliate_url, unique: true
   end
 end

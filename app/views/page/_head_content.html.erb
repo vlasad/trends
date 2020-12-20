@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <title><%= @page.title %></title>
+  <meta name="description" content="<%= @page.description %>">
+  <meta name="keywords" content="<%= @page.keywords %>">
+
+  <meta property="og:title" content="<%= @page.title %>">
+  <meta property="og:description" content="<%= @page.description %>">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="<%= page_url(code: @page.code) %>">
+  <% if @page.meta_image_url.present? %>
+    <meta property="og:image" content="<%= @page.meta_image_url %>">
+  <% end %>
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="<%= page_url(code: @page.code) %>">
+<% end %>
