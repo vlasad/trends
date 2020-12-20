@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "categories" ("id" integer PRIMARY KEY AUTOINCREMENT 
 CREATE UNIQUE INDEX "index_categories_on_code" ON "categories" ("code");
 CREATE TABLE IF NOT EXISTS "offers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar(256) NOT NULL, "affiliate_url" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 CREATE UNIQUE INDEX "index_offers_on_code" ON "offers" ("code");
-CREATE TABLE IF NOT EXISTS "pages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer NOT NULL, "offer_id" integer NOT NULL, "custom_banner_id" integer NOT NULL, "code" varchar NOT NULL, "title" varchar NOT NULL, "content_url" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5f634a1e21"
+CREATE TABLE IF NOT EXISTS "pages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer NOT NULL, "offer_id" integer NOT NULL, "custom_banner_id" integer NOT NULL, "layout_id" integer NOT NULL, "code" varchar NOT NULL, "title" varchar NOT NULL, "content_url" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5f634a1e21"
 FOREIGN KEY ("category_id")
   REFERENCES "categories" ("id")
 , CONSTRAINT "fk_rails_501123ad29"
@@ -21,16 +21,22 @@ FOREIGN KEY ("offer_id")
 , CONSTRAINT "fk_rails_c21d4e18ab"
 FOREIGN KEY ("custom_banner_id")
   REFERENCES "custom_banners" ("id")
+, CONSTRAINT "fk_rails_97c970dbe1"
+FOREIGN KEY ("layout_id")
+  REFERENCES "layouts" ("id")
 );
 CREATE INDEX "index_pages_on_category_id" ON "pages" ("category_id");
 CREATE INDEX "index_pages_on_offer_id" ON "pages" ("offer_id");
 CREATE INDEX "index_pages_on_custom_banner_id" ON "pages" ("custom_banner_id");
+CREATE INDEX "index_pages_on_layout_id" ON "pages" ("layout_id");
 CREATE UNIQUE INDEX "index_pages_on_code" ON "pages" ("code");
+CREATE TABLE IF NOT EXISTS "layouts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "file_name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
 INSERT INTO "schema_migrations" (version) VALUES
 ('20201220094258'),
 ('20201220095117'),
 ('20201220100325'),
 ('20201220100557'),
-('20201220101102');
+('20201220101102'),
+('20201220102700');
 
 
