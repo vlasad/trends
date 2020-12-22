@@ -9,6 +9,7 @@ gem 'rails', '~> 6.1.0'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+gem "rack-timeout"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -29,6 +30,14 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem "bulma-rails"
+
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rbenv',   require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
