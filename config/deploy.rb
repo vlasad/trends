@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 # Change these
-server '144.202.57.240', port: 22, roles: [:web, :app, :db], primary: true
+server '45.76.23.202', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:vlasad/trends.git'
 set :application,     'trends'
@@ -27,7 +27,7 @@ set :keep_releases, 3
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/master.key}
-set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads}
+set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads public/packs}
 
 set :rails_env, 'production'
 set :keep_assets, 2
