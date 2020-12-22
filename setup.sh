@@ -14,9 +14,7 @@ sudo apt update
 sudo apt install yarn # this command install nodejs also
 
 # fullstaqruby
-nano /etc/apt/sources.list.d/fullstaq-ruby.list
-deb https://apt.fullstaqruby.org ubuntu-20.04 main
-
+echo "deb https://apt.fullstaqruby.org ubuntu-20.04 main" | sudo tee /etc/apt/sources.list.d/fullstaq-ruby.list
 curl -SLfO https://raw.githubusercontent.com/fullstaq-labs/fullstaq-ruby-server-edition/main/fullstaq-ruby.asc
 sudo apt-key add fullstaq-ruby.asc
 sudo apt update
