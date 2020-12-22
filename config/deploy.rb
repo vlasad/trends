@@ -27,7 +27,19 @@ set :keep_releases, 3
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/master.key}
-set :linked_dirs,  %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads public/packs}
+set :linked_dirs,  %w{db/prod log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads public/packs}
 
 set :rails_env, 'production'
 set :keep_assets, 2
+
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        upload! 'config/master.key', "#{shared_path}/config/master.key"
+        upload! 'config/database.yml', "#{shared_path}/config/database.yml"
+        upload! 'config/puma_prod.rb', "#{shared_path}/puma.rb"
+      end
+    end
+  end
+end

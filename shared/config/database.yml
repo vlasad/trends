@@ -1,5 +1,0 @@
-production:
-adapter: sqlite3
-  database: shared/production.sqlite3
-  pool: 6
-  timeout: 10000
