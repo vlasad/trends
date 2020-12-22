@@ -29,6 +29,9 @@ set :keep_releases, 3
 set :linked_files, %w{config/database.yml config/master.key}
 set :linked_dirs,  %w{db/prod log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads public/packs}
 
+set :rbenv_type, :user
+set :rbenv_ruby, '2.7.2'
+
 set :rails_env, 'production'
 set :keep_assets, 2
 
